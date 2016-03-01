@@ -1,46 +1,49 @@
 #include<iostream>
 #include<vector>
 #include<string>
-#include<sstream>
-#include<math.h>
 #include<stdlib.h>
 
 using namespace std;
 
-struct matrix
-{
-	int i, j;
-
-};
-
 int main()
 {
-	int n=1,j=0,t=1;
+	int t,n,i=0,count=0;
+	string chef, correct;
+	vector<int> winning, output;
 	cin >> t;
-	vector<matrix> data;
-	string row;
-	int item;
-	vector<int> output;
+	int counter = 0;
 	output.resize(t);
-	for (int l = 0;l < t;l++) {
+	while (counter<t) {
+		count = 0;
 		cin >> n;
-		data.resize(n*n + 1);
-		for (int i = 0; i < n; i++) {
-			for (int j = 0;j < n;j++) {
-				cin >> item;
-				data[item].i = i;
-				data[item].j = j;
+		winning.clear();
+		winning.resize(n + 1);
+		cin >> correct;
+		cin >> chef;
+		for (i = 0;i < n + 1;i++) {
+			cin >> winning[i];
+		}
+		for (i = 0;i < n;i++) {
+			if (chef[i] == correct[i])
+				count ++;
+		}
+		if (count == n) {
+			output[counter] = winning[count];
+		}
+		else {
+			i = 0;
+			output[counter] = winning[count];
+			while (i < count) {
+				if (winning[i]>output[counter])
+					output[counter] = winning[i];
+				i++;
 			}
+			
 		}
-		for (int k = 1; k < n*n; k++) {
-			output[l]+=abs(data[k].i - data[k + 1].i) + abs(data[k].j - data[k + 1].j);
-		}
+		counter++;
 	}
-	system("CLS");
-	int h=0;
-	while (h < t) {
-		cout << output[h] << endl;
-		h++;
+	for (i = 0;i < t;i++) {
+		cout << output[i] << endl;
 	}
 	return 0;
 }
