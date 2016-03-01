@@ -2,36 +2,30 @@
 #include<vector>
 #include<string>
 #include<sstream>
-#include<stdlib.h>
 
 using namespace std;
 
 int CalSubArrays(vector<int> TestCase, int count) {
 
 	vector<int> SubArray;
+	int output;
+	output = count;
 	int k;
-	for (int i = 2;i <= count;i++) {		//SubArray Size = i
+	for (int i = 2;i <= count;i++) {
 		for (int j = 0;j < count - i + 1;j++) {
 			SubArray.assign(TestCase.begin() + j, TestCase.begin() + j + i);
-			k = 0;
-			cout << endl;
-			for (int h = 0;h < SubArray.size();h++) {
-				cout << SubArray[h] << " ";
-			}
-			cout << endl;
-			while (SubArray[k] <= SubArray[k + 1]) {
-				
-				if (k == SubArray.size() - 1) {
-					count += 1;
-					cout << count;
+			for (k = 0;k < SubArray.size()-1;k++)
+			{
+				if (SubArray[k] > SubArray[k + 1]) {
 					break;
 				}
-				k++;
+				
 			}
+			if (k == SubArray.size() - 1)
+				output += 1;
 		}
 	}
-	cout << count;
-	return count;
+	return output;
 }
 
 void main()
@@ -57,9 +51,9 @@ void main()
 				TestCase.push_back(stoi(number));
 			}	
 		} 
-		output[i] = CalSubArrays(TestCase, TestCase.size());
-		cout << "\n";
+		output.push_back(CalSubArrays(TestCase, TestCase.size()));
 	}
+	system("CLS");
 	for (int k = 0;k < noTestCases;k++) {
 		cout << output[k] << endl;
 	}
