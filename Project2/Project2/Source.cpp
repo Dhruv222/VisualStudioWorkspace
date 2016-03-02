@@ -1,49 +1,42 @@
 #include<iostream>
+#include<vector>
 #include<string>
+#include<stdlib.h>
 
 using namespace std;
 
+int isPowerofTwo(int x) {
+	return((x != 0) && ((x & (~x + 1)) == x));
+}
+
 int main()
 {
-	int t, year,count=0;
-	string weekday[7] = { "monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday" };
-	int base_year = 2001;
-	string base_day = weekday[0];
+	int t,count=0;
 	cin >> t;
+	int settings[2] = { 0, 0 };
 	int counter = 0;
 
 	while (counter < t) {
-		cin >> year;
 		count = 0;
-		if (year == 2001) {
-			cout << weekday[0] << endl;
-		}
-		else if (year < 2001) {
-			for (int i = year;i < 2001;i++){
-				if (i % 400 == 0)
-					count += 2;
-				else if (i % 100 == 0)
-					count += 1;
-				else if (i % 4 == 0)
-					count += 2;
-				else
-					count += 1;
+		for (int i = 0;i < 2;i++)
+			cin >> settings[i];
+		while (settings[0] != settings[1]) {
+			if (isPowerofTwo(settings[0]) && settings[1] > settings[0]) {
+				while (settings[0] != settings[1]) {
+					settings[0] *= 2;
+					count++;
+				}
 			}
-			cout << weekday[6-(count-1)%7]<<endl;
-		}
-		else {
-			for (int i = 2001;i < year;i++) {
-				if (i % 400 == 0)
-					count += 2;
-				else if (i % 100 == 0)
-					count += 1;
-				else if (i % 4 == 0)
-					count += 2;
-				else
-					count += 1;
+			else if (settings[0] % 2 == 0) {
+				settings[0] /= 2;
+				count++;
 			}
-			cout << weekday[count%7];
+			else {
+				settings[0] = (settings[0] - 1) / 2;
+				count++;
 			}
+			}
+		cout << count << endl;
 		counter++;
 		}
 	return 0;
