@@ -15,30 +15,37 @@ int main()
 	cin >> t;
 	int settings[2] = { 0, 0 };
 	int counter = 0;
+	string sequence;
 
-	while (counter < t) {
+
 		count = 0;
-		for (int i = 0;i < 2;i++)
-			cin >> settings[i];
-		while (settings[0] != settings[1]) {
-			if (isPowerofTwo(settings[0]) && settings[1] > settings[0]) {
-				while (settings[0] != settings[1]) {
-					settings[0] *= 2;
-					count++;
+		cin >> sequence;
+		for (int i = 0;i < sequence.size();i++) {
+			if (sequence[i] == 'C') {
+				sequence.erase(sequence.begin()+i);
+				for (int j = i;j < sequence.size();j++) {
+					if (sequence[j] == 'H') {
+						sequence.erase(sequence.begin()+j);
+						for (int k = j;k < sequence.size();k++) {
+							if (sequence[k] == 'E') {
+								sequence.erase(sequence.begin()+k);
+								for (int l = k;l < sequence.size();l++) {
+									if (sequence[l] == 'F') {
+										count++;
+										sequence.erase(sequence.begin()+l);
+										i -= 1;
+										j = sequence.size()+3;
+										k = sequence.size()+2;
+										l = sequence.size() + 1;
+									}
+								}
+							}
+						}
+					}
 				}
 			}
-			else if (settings[0] % 2 == 0) {
-				settings[0] /= 2;
-				count++;
-			}
-			else {
-				settings[0] = (settings[0] - 1) / 2;
-				count++;
-			}
-			}
-		cout << count << endl;
-		counter++;
 		}
+		cout << count << endl;		
 	return 0;
 	}
 

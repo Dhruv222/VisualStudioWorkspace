@@ -1,3 +1,7 @@
 ﻿  Source.cpp
-  Project2.vcxproj -> C:\Users\dhruv222\Documents\Visual Studio 2015\Projects\Project2\Debug\Project2.exe
-  Project2.vcxproj -> C:\Users\dhruv222\Documents\Visual Studio 2015\Projects\Project2\Debug\Project2.pdb (Partial PDB)
+c:\users\dhruv222\documents\visual studio 2015\projects\project2\project2\source.cpp(23): warning C4018: '<': signed/unsigned mismatch
+c:\users\dhruv222\documents\visual studio 2015\projects\project2\project2\source.cpp(26): warning C4018: '<': signed/unsigned mismatch
+c:\users\dhruv222\documents\visual studio 2015\projects\project2\project2\source.cpp(29): warning C4018: '<': signed/unsigned mismatch
+c:\users\dhruv222\documents\visual studio 2015\projects\project2\project2\source.cpp(32): warning C4018: '<': signed/unsigned mismatch
+  Project2.vcxproj -> C:\Users\dhruv222\documents\visual studio 2015\Projects\Project2\Debug\Project2.exe
+  Project2.vcxproj -> C:\Users\dhruv222\documents\visual studio 2015\Projects\Project2\Debug\Project2.pdb (Partial PDB)
